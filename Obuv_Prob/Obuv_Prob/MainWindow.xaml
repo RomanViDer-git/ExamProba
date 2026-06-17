@@ -34,10 +34,8 @@
                             <RadioButton x:Name="SortRB" Content="А-Я" Checked="SortRB_Checked" VerticalAlignment="Center"/>
                             <RadioButton x:Name="SortDesRB" Content="Я-А" Checked="SortDesRB_Checked" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Производитель" Margin="5 0 5 1"/>
-                            <ComboBox Name="ManufaturerCB" Width="100" Margin="5 0 5 1" SelectionChanged="ManufaturerCB_SelectionChanged"/>
-                        </StackPanel>
+                        
+                        <Button Name="DelBtn" Content="Удалить" Width="50" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelBtn_Click"/>
                     </StackPanel>
                     <ListBox Name="ProductLB" Grid.Row="1" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>

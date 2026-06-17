@@ -24,6 +24,8 @@ namespace Obuv_Prob
     {
         public Users CurrentUser { get; set; }
         private List<Products> _allProducts;
+        
+        
         public MainWindow(Users authUsers)
         {
             
@@ -38,6 +40,17 @@ namespace Obuv_Prob
             this.DataContext = this;
 
             LoadData();
+
+            if (CurrentUser.Role_id == 3)
+            {
+                SortDesRB.Visibility = Visibility.Collapsed;
+                SortRB.Visibility = Visibility.Collapsed;
+                DelBtn.Visibility = Visibility.Collapsed;
+            }
+            if(CurrentUser.Role_id == 2)
+            {
+                DelBtn.Visibility = Visibility.Collapsed;
+            }
         }
 
         //Поиск
@@ -48,13 +61,13 @@ namespace Obuv_Prob
             List<Products> products = App.db.Products.Where(p => p.Product_Name.Contains(search)).ToList();
             ProductLB.ItemsSource = products;
         }
-
+        //Сортировка
         private void SortRB_Checked(object sender, RoutedEventArgs e)
         {
             List<Products> products = App.db.Products.OrderBy(p => p.Product_Name).ToList();
             ProductLB.ItemsSource =products;    
         }
-
+        //Сортировка
         private void SortDesRB_Checked(object sender, RoutedEventArgs e)
         {
             List<Products> products = App.db.Products.OrderByDescending(p => p.Product_Name).ToList();
@@ -63,33 +76,28 @@ namespace Obuv_Prob
 
         private void LoadData()
         {
-            _allProducts = App.db.Products.ToList();
-            ProductLB.ItemsSource = _allProducts;
-            var manufacturesFromDb = App.db.Manufactures.ToList();
-            List<string> comboItems = new List<string>();
-            comboItems.Add("Все производители");
-            foreach (var man in manufacturesFromDb)
-            {
-                comboItems.Add(man.Manufacturer_Name);   
-            }
-            ManufaturerCB.ItemsSource = comboItems;
-            ManufaturerCB.SelectedIndex = 0;
+            
+            List<Products> products = App.db.Products.ToList();
+            ProductLB.ItemsSource = products;
         }
-
+      
         private void ManufaturerCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ManufaturerCB.SelectedItem == null) return;
-            string selectedManufacturer = ManufaturerCB.SelectedItem.ToString();
-            if (selectedManufacturer == "Все производители")
-            {
-                ProductLB.ItemsSource = _allProducts;
-            }
-            else
-            {
-                var filteredList = _allProducts.Where(p => p.Manufactures != null && p.Manufactures.Manufacturer_Name == selectedManufacturer).ToList();
-                ProductLB.ItemsSource = filteredList;
-            }
             
+
+        }
+
+        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var slectedProduct = ProductLB.SelectedItem as Products;
+            if (slectedProduct == null)
+            {
+                MessageBox.Show("Выбери товар!", "Ошибка",MessageBoxButton.OK);
+                return;
+            }
+            App.db.Products.Remove(slectedProduct);
+            App.db.SaveChanges();
+            LoadData();
         }
     }
 }
