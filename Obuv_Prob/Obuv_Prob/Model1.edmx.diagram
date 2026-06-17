@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="753820349d574190829f5f32ea3feb6e" Name="Diagram1">
+        <EntityTypeShape EntityType="Obuv_ProbModel.Category" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Manufactures" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Order" Width="1.5" PointX="10.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Products" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Pu_Point" Width="1.5" PointX="8" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Role" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.StatusOrder" Width="1.5" PointX="8" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Suppliers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Obuv_ProbModel.Users" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Products__Catego__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Products__Manufa__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Order__Adress_id__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Order__Status_id__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Order__User_Name__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Products__Soppli__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="Obuv_ProbModel.FK__Users__Role_id__5EBF139D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
